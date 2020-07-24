@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val searchResults = mRealm.where(Task::class.java).beginsWith("category", search_edit_text.text.toString()).findAll().sort("date", Sort.DESCENDING)
+        val searchResults = mRealm.where(Task::class.java).equalTo("category", search_edit_text.text.toString()).findAll().sort("date", Sort.DESCENDING)
         Log.d("kotlintest", search_edit_text.text.toString())
         mTaskAdapter.taskList = mRealm.copyFromRealm(searchResults)
         listView1.adapter = mTaskAdapter
